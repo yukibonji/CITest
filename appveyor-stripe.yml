@@ -1,9 +1,9 @@
 image: Visual Studio 2017
 build_script:
-  - cmd: 'build.cmd'
+  - cmd: 'build-stripe.cmd'
 test: off
 environment:
   PAKET_BOOTSTRAPPER_TRACE: true
 
 artifacts:
-  - path: 'bin\Grass.Web'
+  - path: 'bin\Stripe'
