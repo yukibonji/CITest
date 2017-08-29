@@ -8,7 +8,7 @@
     <ProjectGuid>fc74f921-6fe5-4caa-ad3c-fe919a6fe1c7</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Savanna.Web</RootNamespace>
-    <AssemblyName>Savanna.Web</AssemblyName>
+    <AssemblyName>Grass.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>

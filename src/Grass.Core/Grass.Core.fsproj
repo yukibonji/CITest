@@ -7,7 +7,7 @@
     <ProjectGuid>1d182a7b-f954-453c-a07c-b98012ce7bb7</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Savanna</RootNamespace>
-    <AssemblyName>Savanna.Core</AssemblyName>
+    <AssemblyName>Grass.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>

@@ -8,7 +8,7 @@
     <ProjectGuid>4134c9c9-e5df-4437-8f12-e25d283308b0</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Savanna.MemoryDb.Test</RootNamespace>
-    <AssemblyName>Savanna.MemoryDb.Test</AssemblyName>
+    <AssemblyName>Grass.MemoryDb.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>

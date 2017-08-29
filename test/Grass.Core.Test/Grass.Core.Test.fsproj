@@ -8,7 +8,7 @@
     <ProjectGuid>5a0af6ee-f4e7-41e8-81b4-3a11ca854d43</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Savanna.Test</RootNamespace>
-    <AssemblyName>Savanna.Core.Test</AssemblyName>
+    <AssemblyName>Grass.Core.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>

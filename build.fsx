@@ -19,13 +19,13 @@ open System.IO
 Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
 // Project info (used in AssemblyInfo files)
-let project = "XLCatlin.DataLab.XCBRA"
-let summary = "Component of XLCatlin.DataLab.XCBRA"
-let company = "XL Catlin"
-let copyright = "Copyright \u00A9 XL Catlin 2017"
+let project = "ZZZ"
+let summary = "ZZZ"
+let company = "ZZZ"
+let copyright = "Copyright \u00A9 ZZZ"
 
 // Setup global properties for the build
-let solutionFile = "Dazzle.sln"
+let solutionFile = "CITest.sln"
 let temporaryBuildPath = // these are the locations used by .NET projects
     !! "src/**/bin"      // "!!" is the FAKE symbol for "all files matching this pattern"
     ++ "src/**/obj"      // "--" is the FAKE symbol for "and also all files matching this pattern"
@@ -59,11 +59,11 @@ let isCiBuild = hasBuildParam "ciBuild"
 
 
 // setup local database connection strings. These are needed for the type providers to work at compile time
-// when not running under CI, these are "Dazzle" and "DazzleTest"
-// when running under CI, these are "Dazzle-ci" and "DazzleTest-ci"
+// when not running under CI, these are "CITest" and "CITestTest"
+// when running under CI, these are "CITest-ci" and "CITestTest-ci"
 let dbPostFix = if isCiBuild then "-ci" else ""
-let localDbConnection = sprintf "Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True;Database=Dazzle%s;Pooling=False;Application Name=Dazzle" dbPostFix
-let localTestDbConnection = sprintf "Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True;Database=DazzleTest%s;Pooling=False;Application Name=Dazzle" dbPostFix
+let localDbConnection = sprintf "Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True;Database=CITest%s;Pooling=False;Application Name=CITest" dbPostFix
+let localTestDbConnection = sprintf "Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True;Database=CITestTest%s;Pooling=False;Application Name=CITest" dbPostFix
 
 
 // ------------------------------------------------------------------------
@@ -141,7 +141,7 @@ let defaultBuildConfiguration = "CiBuild"
 let buildConfiguration = 
     let config =
         match getBuildParamOrDefault "config" "CiBuild" with
-        | "DazzleOnly" -> "DazzleOnly"
+        | "CITestOnly" -> "CITestOnly"
         // default
         | _ -> defaultBuildConfiguration 
     trace (sprintf "Setting BuildConfiguration to %s" config)
@@ -293,16 +293,16 @@ Target "RunBenchmarks" (fun _ ->
 // --------------------------------------------------------------------------------------
 
 // Database related
-let DazzleDbPath = @"data/Dazzle.Database/"
-let DazzleDbName = "Dazzle.Database"
-let DazzleDbProj = DazzleDbPath + DazzleDbName + ".sqlproj"
-let DazzleDbDacPac = DazzleDbPath + @"bin/Release/" + DazzleDbName + ".dacpac"
+let CITestDbPath = @"data/CITest.Database/"
+let CITestDbName = "CITest.Database"
+let CITestDbProj = CITestDbPath + CITestDbName + ".sqlproj"
+let CITestDbDacPac = CITestDbPath + @"bin/Release/" + CITestDbName + ".dacpac"
 
 Target "CleanDb" (fun _ ->
-    let binPath = DazzleDbPath + @"bin/Release"
+    let binPath = CITestDbPath + @"bin/Release"
     CleanDirs [ binPath ])
 
-Target "BuildDb" (fun _ -> DazzleDbProj |> minimalReleaseRebuild defaultBuildConfiguration)
+Target "BuildDb" (fun _ -> CITestDbProj |> minimalReleaseRebuild defaultBuildConfiguration)
 
 // ------------------------------------------------------------------------
 // BUILD TARGET: "DeployLocalDb"
@@ -330,17 +330,17 @@ let deployDbTo destination =
     deployDb(fun args ->
         { args with
             RecreateDb = true
-            Source = currentDirectory </> DazzleDbDacPac
+            Source = currentDirectory </> CITestDbDacPac
             Destination = destination })
 
 /// the database for local development + compile
 Target "DeployLocalDb" (fun _ ->
-    transformCompiledConnectionStrings [ "DazzleDb", localDbConnection ]
+    transformCompiledConnectionStrings [ "CITestDb", localDbConnection ]
     deployDbTo localDbConnection)
 
 /// the database for local unit tests
 Target "DeployLocalDbTest" (fun _ ->
-    transformTestConnectionStrings [ "DazzleDb", localTestDbConnection ]
+    transformTestConnectionStrings [ "CITestDb", localTestDbConnection ]
     deployDbTo localTestDbConnection)
 
 // ------------------------------------------------------------------------
@@ -352,7 +352,7 @@ Target "DeployLocalDbTest" (fun _ ->
 // ------------------------------------------------------------------------
 
 Target "CopyDbBinaries" (fun _ ->
-    !! (DazzleDbPath + "*.sqlproj")
+    !! (CITestDbPath + "*.sqlproj")
     |> Seq.map (fun f ->
         let destinationRoot = @"bin/Release"
         Path.GetDirectoryName f @@ destinationRoot, buildDir @@ Path.GetFileNameWithoutExtension f)
