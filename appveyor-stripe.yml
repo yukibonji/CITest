@@ -16,9 +16,12 @@ install:
 test_script:
   - node --version
   - npm --version
-  - npm install elm
+  - npm install -g elm
   #- elm-make --help
-  - cd src/StripeElm
+  - cd src\StripeElm
   - elm-make 
 
 build: off
+
+artifacts:
+  - path: 'src/StripeElm/elm-stuff'
