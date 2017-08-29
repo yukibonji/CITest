@@ -1,0 +1,111 @@
+
+SharedDomainModel
+  * ReadModels
+  * Commands
+  * NOT Events
+DotNetCore
+  Type providers
+SQL Database for events
+AppVeyor -price
+FSharpLu 
+Logins  
+   IdentityServer?
+   CEO logic
+   Fake logic
+   AD Integration
+   stormpath Autho
+Data Security story
+   VPN from Azure
+
+==============
+Change build.sh to have LF newlines rather than CRLF -- allows Linux build to work under Windows/Mac
+
+https://msdn.microsoft.com/en-us/commandline/wsl/release_notes#build-16215
+
+
+/usr/local/bin/xbuild  Dazzle.sln /t:Rebuild  /v:m  /p:RestorePackages="False" /p:Configuration="Release" /logger:Fake.MsBuildLogger+ErrorLogger,"./packages/FAKE/tools/FakeLib.dll"
+
+=============
+
+
+* Build.cmd is working again!
+* Added better documentation in the readme (link) and command service (link)
+* Added example of long running Dazzle process (link)
+
+
+"mono paket restore" exception: Failed to getDetailsFromNuGetViaODataFast
+
+
+### Description
+
+Exactly the same issue as #2472,  but under mono using `mono .paket/paket.exe restore` in `build.sh`
+
+### Environment
+
+* Paket 5.81.1
+* Windows 10, Linux subsystem
+* Mono:  5.0.1.1 (May 25 2017)
+
+
+### Repro steps
+
+Assuming Windows 10, Linux subsystem
+
+1. Clone https://github.com/tddstud10/Engine
+2. mono .paket/paket.bootstrapper.exe
+2. mono .paket/paket.bootstrapper.exe
+
+run `build.sh`
+
+Please provide the steps required to reproduce the problem
+
+1. Step A
+
+2. Step B
+
+If possible then please create a git repository with a repro sample or attach a zip to the issue.
+
+### Expected behavior
+
+
+
+### Actual behavior
+
+Exception: "Could not retrieve data from 'https://nuget.org/api/v2/Packages"
+
+```
+Failed to get package details 'Could not retrieve data from 'https://nuget.org/api/v2/Packages?$filter=(tolower(Id) eq 'fake') and (Version eq '4.62.5')''. This feeds implementation might be broken.
+Failed to getDetailsFromNuGetViaODataFast 'https://nuget.org/api/v2/Packages?$filter=(tolower(Id) eq 'graphql') and (NormalizedVersion eq '0.17.1')'. Trying with Version instead of NormalizedVersion (Please report this warning!): System.Exception: Could not retrieve data from 'https://nuget.org/api/v2/Packages?$filter=(tolower(Id) eq 'graphql') and (NormalizedVersion eq '0.17.1')' ---> System.Net.Http.HttpRequestException: An error occurred while sending the request ---> System.Net.WebException: Error: ConnectFailure (Value does not fall within the expected range.) ---> System.ArgumentException: Value does not fall within the expected range.
+  at System.Net.Sockets.Socket.SetSocketOption (System.Net.Sockets.SocketOptionLevel optionLevel, System.Net.Sockets.SocketOptionName optionName, System.Int32 optionValue) [0x00023] in <2b0d86369d72459baed0cee98a8e578a>:0
+  at System.Net.Sockets.Socket.set_DontFragment (System.Boolean value) [0x00009] in <2b0d86369d72459baed0cee98a8e578a>:0
+  at System.Net.Sockets.Socket.SocketDefaults () [0x00009] in <2b0d86369d72459baed0cee98a8e578a>:0
+  at System.Net.Sockets.Socket..ctor (System.Net.Sockets.AddressFamily addressFamily, System.Net.Sockets.SocketType socketType, System.Net.Sockets.ProtocolType protocolType) [0x00095] in <2b0d86369d72459baed0cee98a8e578a>:0
+  at System.Net.WebConnection.Connect (System.Net.HttpWebRequest request) [0x000bb] in <2b0d86369d72459baed0cee98a8e578a>:0
+   --- End of inner exception stack trace ---
+  at System.Net.HttpWebRequest.EndGetResponse (System.IAsyncResult asyncResult) [0x00058] in <2b0d86369d72459baed0cee98a8e578a>:0
+  at System.Threading.Tasks.TaskFactory`1[TResult].FromAsyncCoreLogic (System.IAsyncResult iar, System.Func`2[T,TResult] endFunction, System.Action`1[T] endAction, System.Threading.Tasks.Task`1[TResult] promise, System.Boolean requiresSynchronization) [0x0000f] in <a07d6bf484a54da2861691df910339b1>:0
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x0003e] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x00028] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x00008] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1+ConfiguredTaskAwaiter[TResult].GetResult () [0x00000] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Net.Http.HttpClientHandler+<SendAsync>d__63.MoveNext () [0x003e6] in <7af2c1e113ae4e65a24dc212799e3de6>:0
+   --- End of inner exception stack trace ---
+  at System.Net.Http.HttpClientHandler+<SendAsync>d__63.MoveNext () [0x00449] in <7af2c1e113ae4e65a24dc212799e3de6>:0
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x0003e] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x00028] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x00008] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1+ConfiguredTaskAwaiter[TResult].GetResult () [0x00000] in <a07d6bf484a54da2861691df910339b1>:0
+  at System.Net.Http.HttpClient+<SendAsyncWorker>d__47.MoveNext () [0x000ca] in <7af2c1e113ae4e65a24dc212799e3de6>:0
+   --- End of inner exception stack trace ---
+  at Paket.Utils+getFromUrl@624-8.Invoke (System.Exception _arg4) [0x00036] in <7417a52e883740e9a44107a3fb2170b3>:0
+  at Microsoft.FSharp.Control.AsyncBuilderImpl+tryWithExnA@883[a].Invoke (System.Runtime.ExceptionServices.ExceptionDispatchInfo edi) [0x0000d] in <7417a52e883740e9a44107a3fb2170b3>:0
+  at Microsoft.FSharp.Control.AsyncBuilderImpl+callA@841[b,a].Invoke (Microsoft.FSharp.Control.AsyncParams`1[T] args) [0x00047] in <7417a52e883740e9a44107a3fb2170b3>:0
+```
+
+### Known workarounds
+
+None

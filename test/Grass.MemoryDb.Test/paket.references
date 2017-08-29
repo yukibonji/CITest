@@ -1,0 +1,7 @@
+FSharp.Core
+Expecto
+Expecto.BenchmarkDotNet
+Expecto.FsCheck
+Unquote 
+Newtonsoft.Json
+Microsoft.FSharpLu.Json

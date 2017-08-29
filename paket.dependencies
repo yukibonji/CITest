@@ -1,0 +1,42 @@
+generate_load_scripts: true
+
+source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json
+source https://dotnet.myget.org/F/cli-deps/api/v3/index.json
+source https://api.nuget.org/v3/index.json
+
+framework: net462
+
+// create binding-redirects
+redirects: on
+
+// fsharp
+nuget FSharp.Core
+
+// build
+nuget FAKE
+
+// testing
+nuget FsUnit
+nuget Unquote
+nuget Expecto
+nuget Expecto.BenchmarkDotNet
+nuget Expecto.FsCheck
+nuget FsCheck
+
+// web server
+nuget Suave
+nuget GraphQL
+nuget Microsoft.FSharpLu.Json
+nuget Newtonsoft.Json
+
+// database
+nuget FSharp.Data.SqlClient
+
+// other
+nuget FSPowerPack.Community 
+nuget FSPowerPack.Core.Community 
+nuget FSPowerPack.Linq.Community 
+nuget FSPowerPack.Metadata.Community 
+nuget FSPowerPack.Parallel.Seq.Community 
+nuget MathNet.Numerics
+nuget System.ValueTuple 
