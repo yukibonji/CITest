@@ -16,10 +16,9 @@ install:
 test_script:
   - node --version
   - npm --version
-  - mkdir tmp
-  - cd tmp
-  - npm init --yes
-  - npm install -g elm
-  - elm-make --help
+  - npm install elm
+  #- elm-make --help
+  - cd src/StripeElm
+  - elm-make 
 
 build: off
