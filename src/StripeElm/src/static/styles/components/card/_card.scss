@@ -1,0 +1,146 @@
+@import '../../common/colours';
+@import '../../utils/media';
+.c-card * {
+  display: block;
+  box-sizing: border-box;
+}
+
+
+
+// ----------------------------------------
+// !!CARD
+// ----------------------------------------
+/* ** !!CARD ** */
+
+// Sometimes you need a container or wrapper for your components in which case you could use a class like this
+// Important thing to understand here is that .c-card doesn't depend on .card-container
+//.card-container is a helper in this situation, it helps us to keep the cards together
+.card-container {
+  // max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.c-card {
+  display: inline-block;
+  align-self: stretch;
+  width: calc(100% - 2px);
+
+  &__section-title {
+    color : #00B5CC;
+  }
+
+  &--location-detail {
+    @include screen--medium-and-up {
+      width: calc(50% - 4px);
+    }
+    @include screen--large-and-up {
+      width: calc(33.333% - 6px);
+    }
+    transition: box-shadow .15s ease-in-out;
+    &:hover {
+      // box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.25);
+      box-shadow: inset 0px 2px 0px $mid-red,
+                  0 10px 10px -8px rgba(0, 0, 0, 0.25);
+      // border : 1px solid $mid-red;
+    }
+  }
+
+  margin: 2px;
+  margin-bottom: 16px;
+  border-radius: 0 0 4px 4px;
+  // margin: 20px;
+  // cursor: pointer;
+
+  text-align: left;
+  background: #fff;
+  // box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.2);
+  border : 1px solid #e7e7e7;
+
+
+
+  &__header {
+    margin-bottom: 0px;
+    // display: flex;
+  }
+
+  &__image {
+    // display: inline-block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__body {
+    padding: 12px 14px 0px 14px;
+  }
+
+  &__description {
+    background-color: #f7f7f7;
+    padding: 1px 14px 10px 14px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    margin-top: 5px;
+    color: $gray3;
+    padding: 0;
+  }
+
+  &__intro {
+    margin-bottom: 0;
+  }
+
+  &__footer {
+    display: flex;
+    background-color: $grey-white;
+    padding: 14px;
+    // border: 1px solid $gray5;
+    border-radius: 0 0 4px 4px;
+    border-top: 4px solid $gray3;
+  }
+
+  &--location-footer  {
+    border-top: 4px solid #0794b7;
+    background: #1FA7CB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #36b2d1, #1FA7CB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #36b2d1, #1FA7CB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+}
+
+
+
+.c-card--center {
+  text-align: center
+}
+
+
+.c-card--wide {
+  // max-width: 1000px;
+
+  .c-card {
+
+    &__header {
+      float: left;
+    }
+
+    &__body {
+      float: left;
+      padding-top: 30px;
+    }
+
+    &__footer {
+      clear: both;
+      text-align: center;
+    }
+  }
+}

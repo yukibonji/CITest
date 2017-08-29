@@ -1,0 +1,84 @@
+@import 'common/variables';
+@import 'common/colours';
+
+// Local colour aliases
+
+$text-selection-color: rgba(125, 188, 255, .6) !default;
+
+$divider-black: rgba($black, .15);
+
+$text-color: $gray1;
+
+$heading-color: $gray1;
+
+// Local mixins
+
+@mixin base-typography() {
+  text-transform: none;
+  line-height: $line-height;
+  letter-spacing: 0;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: 400;
+}
+
+
+@mixin header-typography() {
+  color: $heading-color;
+  font-weight: 600;
+}
+
+// Elements
+
+hr {
+  border: 0;
+  border-bottom: 1px solid $divider-black;
+  margin: ($grid-size * 2) 0;
+}
+
+
+::selection {
+  background: $text-selection-color;
+}
+
+
+body {
+  @include base-typography();
+  color: $text-color;
+}
+
+small {
+  font-size: $font-size-small;
+}
+
+
+$headers: (
+  "h1": (40px, .8em),
+  "h2": (27px, .8em),
+  "h3": (24px, .8em),
+  "h4": (20px, .9em),
+  "h5": (17px, .9em),
+  "h6": (15px, .9em)
+);
+
+@each $header, $props in $headers {
+  #{$header} {
+    @include header-typography();
+    font-size: nth($props, 1);
+    line-height: nth($props, 2);
+    margin: 0 0 $grid-size;
+    padding: 0;
+  }
+}
+
+
+// Styles
+
+.ui-text {
+  @include base-typography();
+}
+
+.ui-text-large {
+  font-size: $font-size-large;
+  line-height: 1.25;
+}

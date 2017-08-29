@@ -1,0 +1,31 @@
+@import '../common/variables';
+
+$nav-item-padding: 1em !default;
+$panel-nav-top: ($nav-item-padding * 2) + ($line-height * 1em) !default;
+$panel-nav-bottom: $panel-nav-top !default;
+
+.o-panel-container {
+  position: relative;
+}
+
+.o-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.o-panel--nav-top {
+  top: $panel-nav-top;
+}
+
+.o-panel--nav-bottom {
+  bottom: $panel-nav-bottom;
+}
+
+.c-card__body .o-panel {
+  padding: .5em;
+}

@@ -1,0 +1,40 @@
+
+$media-image-width: 60px !default;
+$media-body-margin-left: 10px !default;
+
+
+.o-media {
+  display: flex;
+}
+
+.o-media .c-heading {
+  padding: 0;
+}
+
+.o-media__image,
+.o-media__body {
+  flex: 1;
+  padding: 0 2px;
+  @include grid__cell--no-gutter;
+
+  &--top {
+    align-self: flex-start;
+  }
+
+  &--center {
+    align-self: center;
+  }
+
+  &--bottom {
+     align-self: flex-end;
+  }
+}
+
+.o-media__image {
+  flex: 0 1 auto;
+  width: $media-image-width;
+}
+
+.o-media__body {
+  margin-left: $media-body-margin-left;
+}

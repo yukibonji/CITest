@@ -1,0 +1,208 @@
+@import '../../common/colours';
+@import '../../common/variables';
+
+$nav-border-color: #d7d7d7;
+$navitem-background-color: none !default;
+$navitem-background-color-hover: rgba($gray4, .3) !default;
+$navitem-background-color-active: rgba($gray2, .3) !default;
+
+// "intent": (default, hover, active colors)
+$navitem-intents: (
+  "primary": ($intent-primary, $blue2, $blue1),
+  "success": ($intent-success, $green2, $green1),
+  "warning": ($intent-warning, $orange2, $orange1),
+  "danger": ($intent-danger, $red2, $red1)
+) !default;
+
+
+@mixin navitem-intent($intent-color, $text-color) {
+  color: $text-color;
+
+  &:hover,
+  &:active,
+  &.pt-active {
+    background: none;
+    box-shadow: none;
+    color: $text-color;
+  }
+
+  &:hover {
+    background: rgba($intent-color, .15);
+    color: $text-color;
+  }
+
+  &:active,
+  &--state-active {
+    background: rgba($intent-color, .3);
+    color: $text-color;
+  }
+
+  &:disabled,
+  &--state-disabled {
+    background: none;
+    color: rgba($text-color, .5);
+  }
+}
+
+
+header {
+  background-color: $white;
+  border-bottom: 1px solid $nav-border-color;
+  margin-bottom: $navbar-margin-bottom;
+}
+
+.c-navbar {
+  align-items: center;
+  display: flex;
+
+  height: $navbar-height;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: $app-width;
+  padding: 0 10px;
+
+
+
+  &__navgroup {
+    display: flex;
+    flex-direction: row;
+    &--align-right {
+      justify-content: flex-end;
+    }
+
+    &--align-left {
+      justify-content: flex-start;
+    }
+
+    &--align-center {
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    margin: 0 18px;
+  }
+
+  &__navicon {
+    align-items: baseline;
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    margin-right: 6px;
+    min-width: 30px;
+    padding: 4px;
+    user-select: none;
+    vertical-align: middle;
+
+    &:hover {
+      background: $navitem-background-color-hover;
+      box-shadow: none;
+      color: $text-color;
+      text-decoration: none;
+    }
+
+    &:active,
+    &--state-active {
+      background: $navitem-background-color-active;
+      box-shadow: none;
+      color: $text-color;
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &--state-disabled,
+    &--state-disabled:hover {
+      background: none;
+      color: $text-color-disabled;
+      cursor: not-allowed;
+    }
+
+    @each $intent, $colors in $navitem-intents {
+      &--intent-#{$intent} {
+        @include navitem-intent(
+          map-get($intent-colors, $intent),
+          map-get($intent-text-colors, $intent)
+        );
+      }
+    }
+  }
+
+
+  &__navitem {
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $font-family-medium;
+    font-size: 14px;
+    line-height: 30px;
+    margin-right: 11px;
+    min-height: 30px;
+    min-width: 30px;
+    padding: 0 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: none;
+    user-select: none;
+    vertical-align: middle;
+
+    &:visited {
+      color: $text-color;
+    }
+    &:hover {
+      background: $navitem-background-color-hover;
+      box-shadow: none;
+      color: $text-color;
+      text-decoration: none;
+    }
+
+    &::after {
+      color: $navitem-background-color-hover;
+      content: '|';
+      display: inline-block;
+      margin-left: 14px;
+      margin-top: 1px;
+      position: absolute;
+      user-select: none;
+    }
+
+    &:last-of-type::after {
+      content: none;
+    }
+
+
+
+    &:active,
+    &--state-active {
+      background: $navitem-background-color-active;
+      box-shadow: none;
+      color: $text-color;
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &--state-disabled,
+    &--state-disabled:hover {
+      background: none;
+      color: $text-color-disabled;
+      cursor: not-allowed;
+    }
+
+    @each $intent, $colors in $navitem-intents {
+      &--intent-#{$intent} {
+        @include navitem-intent(
+          map-get($intent-colors, $intent),
+          map-get($intent-text-colors, $intent)
+        );
+      }
+    }
+  }
+
+}

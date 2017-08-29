@@ -1,0 +1,77 @@
+@import "../../common/mixins";
+@import "../../common/variables";
+@import "../../common/colours";
+
+$color-tint: 0.2;
+$button-border: 1px solid $gray4;
+$button-gradient: linear-gradient(to bottom, rgba($white, 0.8), rgba($white, 0)) !default;
+$button-intent-gradient: linear-gradient(to bottom, rgba($white, 0.2), rgba($white, 0)) !default;
+
+$button-box-shadow-active:
+  inset 0 0 0 1px rgba($black, 0.2),
+  inset 0 1px 2px rgba($black, 0.2) !default;
+
+@mixin button-color($background-color: $gray5,
+                    $background-color-dark: $gray2,
+                    $background-color-light: $gray4,
+                    $color: $black,
+                    $gradient: $button-gradient,
+                    $border-color: $gray4
+                    ) {
+  border: 1px solid $border-color;
+  background-color: $background-color;
+  background-image: $gradient;
+
+  color: $color;
+
+  &.c-button--active {
+    background-color: $background-color-dark;
+    box-shadow: $button-box-shadow-active;
+    border: 0;
+  }
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: $background-color-light;
+    }
+
+    &:focus {
+      border-color: $button-focus-border-color;
+      box-shadow: $button-focus-box-shadow;
+    }
+
+    &:active {
+      background-color: $background-color-dark;
+    }
+  }
+}
+
+
+
+@mixin button {
+  @include button-color;
+  display: inline-block;
+  max-width: 100%;
+  margin: $button-margin;
+  padding: $button-padding;
+  // border: 1px solid $button-border;
+  border-radius: $button-border-radius;
+  outline: 0;
+  font-family: $button-font-family;
+  font-size: $button-font-size;
+  line-height: $button-line-height;
+  text-align: $button-text-align;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: $button-white-space;
+  cursor: pointer;
+  overflow: hidden;
+  vertical-align: middle;
+  appearance: none;
+  user-select: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: $button-disabled-opacity;
+  }
+}

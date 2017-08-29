@@ -1,0 +1,159 @@
+html,
+body  {
+  height: 100%;
+}
+
+.c-app {
+  height: calc(100vh - 82px);
+  overflow-y: auto;
+}
+
+.c-simple-panel {
+  margin-bottom: 8px;
+  padding: 4px;
+  flex: 1;
+  background-color: #fff;
+  border-radius: 4px 4px 0px 0px;
+  border: 1px solid #eaeaea;
+  border-bottom: 2px solid #e7e7e7;
+}
+
+@keyframes colorchange
+{
+  0%,100% {background: #1abc9c }
+  5% {background: #2ecc71 }
+  10% {background: #3498db }
+  15% {background: #9b59b6 }
+  20% {background: #34495e }
+  25% {background: #16a085 }
+  30% {background: #27ae60 }
+  35% {background: #2980b9 }
+  40% {background: #8e44ad }
+  45% {background: #2c3e50 }
+  50% {background: #f1c40f }
+  55% {background: #e67e22 }
+  60% {background: #e74c3c }
+  65% {background: #ecf0f1 }
+  70% {background: #95a5a6 }
+  75% {background: #f39c12 }
+  80% {background: #d35400 }
+  85% {background: #c0392b }
+  90% {background: #bdc3c7 }
+  95% {background: #7f8c8d }
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+  0%,100% {background: #1abc9c }
+  5% {background: #2ecc71 }
+  10% {background: #3498db }
+  15% {background: #9b59b6 }
+  20% {background: #34495e }
+  25% {background: #16a085 }
+  30% {background: #27ae60 }
+  35% {background: #2980b9 }
+  40% {background: #8e44ad }
+  45% {background: #2c3e50 }
+  50% {background: #f1c40f }
+  55% {background: #e67e22 }
+  60% {background: #e74c3c }
+  65% {background: #ecf0f1 }
+  70% {background: #95a5a6 }
+  75% {background: #f39c12 }
+  80% {background: #d35400 }
+  85% {background: #c0392b }
+  90% {background: #bdc3c7 }
+  95% {background: #7f8c8d }
+}
+
+
+.c-loading {
+  min-height: 2px;
+  width: 100%;
+  background-color: $white;
+  &--active {
+    animation: colorchange 1.4s linear infinite;
+  }
+}
+
+@keyframes colorchange
+{
+  0%,100% {background: $red  }
+  33% {background: $yellow }
+  66% {background: $green }
+}
+
+// @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+// {
+//   0%,100% {background: #1abc9c }
+//   5% {background: #2ecc71 }
+//   10% {background: #3498db }
+//   15% {background: #9b59b6 }
+//   20% {background: #34495e }
+//   25% {background: #16a085 }
+//   30% {background: #27ae60 }
+//   35% {background: #2980b9 }
+//   40% {background: #8e44ad }
+//   45% {background: #2c3e50 }
+//   50% {background: #f1c40f }
+//   55% {background: #e67e22 }
+//   60% {background: #e74c3c }
+//   65% {background: #ecf0f1 }
+//   70% {background: #95a5a6 }
+//   75% {background: #f39c12 }
+//   80% {background: #d35400 }
+//   85% {background: #c0392b }
+//   90% {background: #bdc3c7 }
+//   95% {background: #7f8c8d }
+// }
+//
+//
+//
+//
+// @-moz-keyframes colorchange /* Firefox */
+// {
+//   0%,100% {background-color: #1abc9c }
+//   5% {background-color: #2ecc71 }
+//   10% {background-color: #3498db }
+//   15% {background-color: #9b59b6 }
+//   20% {background-color: #34495e }
+//   25% {background-color: #16a085 }
+//   30% {background-color: #27ae60 }
+//   35% {background-color: #2980b9 }
+//   40% {background-color: #8e44ad }
+//   45% {background-color: #2c3e50 }
+//   50% {background-color: #f1c40f }
+//   55% {background-color: #e67e22 }
+//   60% {background-color: #e74c3c }
+//   65% {background-color: #ecf0f1 }
+//   70% {background-color: #95a5a6 }
+//   75% {background-color: #f39c12 }
+//   80% {background-color: #d35400 }
+//   85% {background-color: #c0392b }
+//   90% {background-color: #bdc3c7 }
+//   95% {background-color: #7f8c8d }
+// }
+//
+// @-o-keyframes colorchange /* Opera */
+// {
+//   0%,100% {background: #1abc9c }
+//   5%  {background: #2ecc71 }
+//   10% {background: #3498db }
+//   15% {background: #9b59b6 }
+//   20% {background: #34495e }
+//   25% {background: #16a085 }
+//   30% {background: #27ae60 }
+//   35% {background: #2980b9 }
+//   40% {background: #8e44ad }
+//   45% {background: #2c3e50 }
+//   50% {background: #f1c40f }
+//   55% {background: #e67e22 }
+//   60% {background: #e74c3c }
+//   65% {background: #ecf0f1 }
+//   70% {background: #95a5a6 }
+//   75% {background: #f39c12 }
+//   80% {background: #d35400 }
+//   85% {background: #c0392b }
+//   90% {background: #bdc3c7 }
+//   95% {background: #7f8c8d }
+// }

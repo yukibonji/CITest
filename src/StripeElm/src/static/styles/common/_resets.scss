@@ -1,0 +1,10 @@
+html {
+  box-sizing: border-box;
+}
+
+// stylelint-disable selector-no-universal
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}

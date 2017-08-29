@@ -1,0 +1,21 @@
+@import '../common/variables';
+
+$bg-color: $dirty-white;
+
+html,
+body {
+  background-color: $bg-color;
+  height: 100%;
+}
+
+.l-container {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: $app-width;
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+}

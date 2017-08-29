@@ -1,0 +1,128 @@
+// @import "../../common/variables";
+// @import "../forms/common";
+// @import "./common";
+@import './common';
+@import '../../common/colours';
+// Local variables
+$spacing-small: .5em !default;
+
+$button-padding: $spacing-small !default;
+$button-margin: 0 !default;
+
+$button-color: $white !default;
+$button-background-color: rgba($gray2, .2) !default;
+
+$button-brand-color: $white !default;
+$button-brand-background-color: $midnight !default;
+
+$button-info-color: $white !default;
+$button-info-background-color: $intent-primary !default;
+
+$button-warning-color: $white !default;
+$button-warning-background-color: intent-warning !default;
+
+$button-success-color: $white !default;
+$button-success-background-color: $intent-success !default;
+
+$button-error-color: $white !default;
+$button-error-background-color: $intent-danger !default;
+
+$button-disabled-opacity: .5 !default;
+$button-font-family: inherit !default;
+$button-font-size: 1em !default;
+$button-line-height: normal !default;
+$button-text-align: center !default;
+$button-white-space: nowrap !default;
+
+$button-border-width: 1px!default;
+$button-border-style: solid !default;
+$button-border-color: transparent !default;
+$button-border: $button-border-width $button-border-style $button-border-color !default;
+$button-border-radius: 2px !default;
+$button-focus-border-color: $blue3 !default;
+$box-shadow-focus: inset 0 0 0 2px lighten($blue3 , 0.6) !default;
+$button-focus-box-shadow: $box-shadow-focus !default;
+
+$button-ghost-color: $blue3 !default;
+$button-ghost-hover-color: $white !default;
+$button-ghost-brand-color: $midnight !default;
+
+$button-ghost-brand-hover-color: $white !default;
+
+$button-ghost-info-color: $intent-primary !default;
+$button-ghost-info-hover-color: $white !default;
+
+$button-ghost-warning-color: $intent-warning !default;
+$button-ghost-warning-hover-color: $white !default;
+
+$button-ghost-success-color: $intent-success !default;
+$button-ghost-success-hover-color: $white !default;
+
+$button-ghost-error-color: $intent-danger !default;
+$button-ghost-error-hover-color: $white !default;
+
+$button-ghost-border-width: $button-border-width !default;
+$button-ghost-border-style: $button-border-style !default;
+
+$button-rounded-border-radius: 4px !default;
+$button-close-font-weight: 600 !default;
+$button-close-font-size: 1.4em !default;
+
+
+$button-icon-left-padding: $spacing-small !default;
+$button-icon-right-padding: $spacing-small !default;
+
+$button-super-font-size: $font-size-large !default;
+$button-xlarge-font-size: $font-size-large  !default;
+$button-large-font-size: $font-size-large !default;
+$button-medium-font-size: $font-size !default;
+$button-small-font-size: $font-size-small !default;
+$button-xsmall-font-size: $font-size-small !default;
+
+// Classes
+.c-button {
+  @include button;
+}
+
+.c-button--close {
+  @include button-color(rgba($white,.0), inherit);
+  position: absolute;
+  right: $spacing-small;
+  padding: 0;
+  outline: 0;
+  font-size: $button-close-font-size;
+  font-weight: $button-close-font-weight;
+  line-height: 1;
+}
+
+.c-button--block {
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+.c-button--info {
+  @include button-color($blue3, $blue2 , $blue4, $button-info-color, $button-intent-gradient, $blue2);
+}
+
+.c-button--warning {
+  @include button-color($orange3,$orange2,$orange4, $white, $button-intent-gradient, $orange2);
+}
+
+.c-button--success {
+  @include button-color($green3,$green2,$green4, $white, $button-intent-gradient, $green2);
+}
+
+.c-button--error {
+  @include button-color($red2, $red1, $red3, $white, $button-intent-gradient, $red1);
+}
+
+
+.c-button__icon-left {
+  padding-right: $button-icon-left-padding;
+}
+
+.c-button__icon-right {
+  padding-left: $button-icon-right-padding;
+}

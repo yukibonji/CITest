@@ -1,0 +1,123 @@
+$spacing-medium: 1em !default;
+$spacing-small: .5em !default;
+$tooltip-z-index: 100 !default;
+$tooltip-arrow-width: .6em !default;
+$tooltip-body-padding: $spacing-small $spacing-medium !default;
+$tooltip-body-background-color: rgb(57,75,89) !default;
+$tooltip-body-color: #FFF !default;
+$tooltip-line-height: 1.45 !default;
+$tooltip-body-border-width: 1px !default;
+$tooltip-body-border-style: solid !default;
+$tooltip-body-border-color: rgb(57,75,89) !default;
+$tooltip-body-border-radius: 4px !default;
+
+
+.c-tooltip {
+  position: relative;
+  overflow: visible;
+
+  &:before,
+  &:after {
+    transition: all 0.15s 0.0s ease-in-out;
+
+    visibility: hidden;
+    z-index: 100;
+    opacity: 0;
+  }
+
+  &:before {
+    position: absolute;
+    border: $tooltip-arrow-width solid transparent;
+    content: '';
+  }
+
+  &:after {
+    position: absolute;
+    padding: .25em .5em;
+    border: $tooltip-body-border-width $tooltip-body-border-style $tooltip-body-border-color;
+    border-radius: $border-radius;
+    background-color: $tooltip-body-background-color;
+    color: $tooltip-body-color;
+    line-height: $tooltip-line-height;
+    white-space: nowrap;
+    content: attr(aria-label);
+    visibility: hidden;
+  }
+
+  &:focus,
+  &:focus:before,
+  &:focus:after {
+    outline : none;
+  }
+
+  &:hover:before,
+  &:hover:after,
+  &:focus:before,
+  &:focus:after {
+    opacity: 100;
+    visibility: visible;
+    transition: all 0.15s 0.65s ease-in-out;
+  }
+}
+
+.c-tooltip--top {
+  &:before {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -1em);
+    border-top-color: $tooltip-body-border-color;
+  }
+
+  &:after {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -3em);
+  }
+}
+
+.c-tooltip--right {
+  &:before {
+    top: 50%;
+    left: 100%;
+    transform: translate(0, -50%);
+    border-right-color: $tooltip-body-border-color;
+  }
+
+  &:after {
+    top: 50%;
+    left: 100%;
+    transform: translate(1em, -50%);
+  }
+}
+
+.c-tooltip--bottom {
+
+
+  &:before {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 1em);
+    border-bottom-color: $tooltip-body-border-color;
+  }
+
+  &:after {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 3em);
+  }
+}
+
+.c-tooltip--left {
+  &:before {
+    top: 50%;
+    right: 100%;
+    transform: translate(0, -50%);
+    border-left-color: $tooltip-body-border-color;
+  }
+
+  &:after {
+    top: 50%;
+    right: 100%;
+    transform: translate(-1em, -50%);
+  }
+}
