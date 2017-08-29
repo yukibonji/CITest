@@ -8,4 +8,4 @@ environment:
   PAKET_BOOTSTRAPPER_TRACE: true
 
 artifacts:
-  - path: 'bin\Grass.Web
+  - path: 'bin\Grass.Web'
