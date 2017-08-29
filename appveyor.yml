@@ -1,6 +1,6 @@
 image: Visual Studio 2017
 install:
-  - cmd: '.paket\paket.bootstrapper.exe'
+  - cmd: %APPVEYOR_BUILD_FOLDER%\.paket\paket.bootstrapper.exe
   - cmd: '.paket\paket.exe restore'
 build_script:
   - cmd: 'build.cmd'
