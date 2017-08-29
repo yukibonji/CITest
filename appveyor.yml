@@ -1,6 +1,9 @@
 image: Visual Studio 2017
+install:
+  - cmd: '.paket\paket.bootstrapper.exe'
+  - cmd: '.paket\paket.exe restore'
 build_script:
-  - cmd: build.cmd
+  - cmd: 'build.cmd'
 on_failure:
   - appveyor PushArtifact FAKE.svclog
 test: off
