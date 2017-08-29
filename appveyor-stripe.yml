@@ -19,7 +19,7 @@ test_script:
   - npm install -g elm
   #- elm-make --help
   - cd src\StripeElm
-  - elm-make 
+  - elm-make --yes
 
 build: off
 
